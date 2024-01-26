@@ -130,8 +130,6 @@ public class ChaseState : IState
     public void OnExit() { }
 }
 
-
-
 public class AttackState : IState
 {
     private EnemyController manager;
@@ -157,5 +155,93 @@ public class AttackState : IState
             manager.TransitonState(StateType.Chase);
         }
     }
+    public void OnExit() { }
+}
+
+public class UpsetState : IState
+{
+    private EnemyController manager;
+
+    private Parameter parameter;
+
+    private AnimatorStateInfo info;
+    public UpsetState(EnemyController manager)
+    {
+        this.manager = manager;
+        this.parameter = manager.parameter;
+    }
+    public void OnEnter()
+    {
+        parameter.animator.Play("E001Upset");
+    }
+    
+    public void OnUpdate() 
+    {
+        if (parameter.happiness > parameter.upsetThreshold && parameter.happiness < parameter.happyThreshold)
+        {
+            manager.TransitonState(StateType.Happy);
+        }
+    }
+    public void OnExit() { }
+}
+
+public class HappyState : IState
+{
+    private EnemyController manager;
+
+    private Parameter parameter;
+
+    private AnimatorStateInfo info;
+    public HappyState(EnemyController manager)
+    {
+        this.manager = manager;
+        this.parameter = manager.parameter;
+    }
+    public void OnEnter()
+    {
+        parameter.animator.Play("E001Upset");
+    }
+    
+    public void OnUpdate() 
+    {
+        if (parameter.happiness <= parameter.upsetThreshold )
+        {
+            manager.TransitonState(StateType.Upset);
+        }
+
+        if (parameter.happiness >= parameter.happyThreshold)
+        {
+            manager.TransitonState(StateType.Happiest);
+        }
+    }
+    
+    public void OnExit() { }
+}
+
+public class HappiestState : IState
+{
+    private EnemyController manager;
+
+    private Parameter parameter;
+
+    private AnimatorStateInfo info;
+    public HappiestState(EnemyController manager)
+    {
+        this.manager = manager;
+        this.parameter = manager.parameter;
+    }
+    public void OnEnter()
+    {
+        parameter.animator.Play("E001Upset");
+    }
+    
+    public void OnUpdate() 
+    {
+        if (parameter.happiness > parameter.upsetThreshold && parameter.happiness < parameter.happyThreshold)
+        {
+            manager.TransitonState(StateType.Happy);
+        }
+    }
+    
     public void OnExit() { }
 }
