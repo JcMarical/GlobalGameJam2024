@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum StateType
 {
-    Idle,Patrol,Chase,Attack
+    Idle,Patrol,Chase,Attack,Upset,Happy,Happiest
 }
 
 
@@ -13,6 +13,13 @@ public enum StateType
 [Serializable]
 public class Parameter
 {
+    [Header("快乐属性")]
+    public int happiness;
+
+    public int upsetThreshold;
+    public int happyThreshold;
+
+    [Header("家具本身属性")]
     public int health;
     public float moveSpeed;
     public float chaseSpeed;
@@ -45,6 +52,7 @@ public class EnemyController : MonoBehaviour
         states.Add(StateType.Patrol, new PatrolState(this));
         states.Add(StateType.Chase, new ChaseState(this));
         states.Add(StateType.Attack, new AttackState(this));
+        states.Add(StateType.Upset,new UpsetState(this));
 
         TransitonState(StateType.Idle);
 
