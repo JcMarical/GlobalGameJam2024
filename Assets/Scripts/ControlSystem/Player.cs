@@ -46,7 +46,6 @@ public class Player : MonoBase
             }
             else if(jump_holdtime_now>0)
             {
-                Debug.Log("done");
                 jumpspeed_now = jumpspeed;
                 jump_holdtime_now -= Time.fixedDeltaTime;
             }
