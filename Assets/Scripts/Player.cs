@@ -8,6 +8,8 @@ public class Player : MonoBase
     private float speed = 0.1f;
     private float jumpspeed = 0.5f;
     private float jumpspeed_now=0.0f;
+    private float jump_holdtime = 5.0f;
+    private float jump_holdtime_now = 0.0f;
     private float a = 2.0f;
     private bool isJumping = false;
     void Start()
@@ -31,7 +33,7 @@ public class Player : MonoBase
     {
         if (message.Command == MessageType.Controll_Move)
         {
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x + speed*(float)message.Content, gameObject.transform.position.y);
+            //gameObject.transform.position = new Vector3(gameObject.transform.position.x + speed*(float)message.Content, gameObject.transform.position.y);
         }
         if (message.Command == MessageType.Controll_Jump)
         {
@@ -39,7 +41,14 @@ public class Player : MonoBase
             {
                 isJumping = true;
                 jumpspeed_now = jumpspeed;
+                jump_holdtime_now = jump_holdtime;
                 gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + jumpspeed_now);
+            }
+            else if(jump_holdtime_now>0)
+            {
+                Debug.Log("done");
+                jumpspeed_now = jumpspeed;
+                jump_holdtime_now -= Time.fixedDeltaTime;
             }
         }
         if (message.Command == MessageType.Player_OnGround)
