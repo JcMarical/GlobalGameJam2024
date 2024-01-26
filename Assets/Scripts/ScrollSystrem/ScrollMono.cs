@@ -5,20 +5,18 @@ using UnityEngine;
 public class ScrollMono : MonoBase
 {
     // Start is called before the first frame update
-    public float movespeed=0.1f;
+    public float movespeed;
     public bool isActive=false;
     public float destroy_place = -24.0f;
     void Start()
     {
-        if(!isActive)
-        GroundManager.Register(this);
+        behavior_start();
     }
 
     // Update is called once per frame
     private void FixedUpdate()
     {
-        if (isActive)
-            move();
+        behavior_fixed();
     }
     void Update()
     {
@@ -26,6 +24,17 @@ public class ScrollMono : MonoBase
         {
             destroy();
         }
+    }
+    public virtual void behavior_start()
+    {
+        movespeed = ScrollManager.ScrollSpeed;
+        if (!isActive)
+            ScrollManager.Register(this);
+    }
+    public virtual void behavior_fixed()
+    {
+        if (isActive)
+            move();
     }
     public virtual void move()
     {
