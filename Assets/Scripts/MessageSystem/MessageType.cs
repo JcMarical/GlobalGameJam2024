@@ -9,6 +9,7 @@ public class MessageType
     public static byte Type_UI = 2;
     public static byte Type_Audio = 3;
     public static byte Type_Player = 4;
+    public static byte Type_Scroll = 5;
     //控制消息
     public static int Controll_Move = 100;
     public static int Controll_Jump = 101;
@@ -20,5 +21,7 @@ public class MessageType
     public static int Audio_play = 300;
     //玩家消息
     public static int Player_OnGround = 400;
+    //卷轴消息
+    public static int Scroll_NewGround = 500;
 
 }
