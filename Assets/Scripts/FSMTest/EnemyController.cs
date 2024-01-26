@@ -15,10 +15,9 @@ public class Parameter
 {
     [Header("快乐属性")]
     public int happiness;
-
     public int upsetThreshold;
     public int happyThreshold;
-
+    public int maxThreshold;
     [Header("家具本身属性")]
     public int health;
     public float moveSpeed;
