@@ -19,6 +19,6 @@ public class MessageType
     //音频消息
     public static int Audio_play = 300;
     //玩家消息
-    public static int Player_Move = 400;
+    public static int Player_OnGround = 400;
 
 }
