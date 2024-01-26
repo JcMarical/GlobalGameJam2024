@@ -23,7 +23,7 @@ public class GroundManager : ManagerBase
     public override void ReceiveMessage(Message message)
     {
         int aim=((int)((ProtoGroundCount+1) * Random.value));
-        Debug.Log(ProtoGroundCount);
+        Debug.Log(aim);
         base.ReceiveMessage(new Message(message.Type, message.Command, aim));
     }
 }

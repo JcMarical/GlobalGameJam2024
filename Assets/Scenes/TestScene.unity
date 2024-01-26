@@ -191,12 +191,12 @@ GameObject:
   m_Component:
   - component: {fileID: 378583137}
   - component: {fileID: 378583139}
-  - component: {fileID: 378583138}
   - component: {fileID: 378583141}
   - component: {fileID: 378583140}
+  - component: {fileID: 378583142}
   m_Layer: 0
   m_Name: Triangle
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -217,20 +217,6 @@ Transform:
   m_Father: {fileID: 398086044}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &378583138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 378583136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e0dba53148bc3498052e9ca0877399, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundID: 1
-  isActive: 0
 --- !u!212 &378583139
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -332,6 +318,23 @@ PolygonCollider2D:
     - - {x: 0, y: 0.5773587}
       - {x: -0.5, y: -0.28866667}
       - {x: 0.5, y: -0.28866667}
+--- !u!114 &378583142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378583136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d85443d41bc0a7746a1d807ea720e05b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movespeed: 0.1
+  isActive: 0
+  destroy_place: -24
+  groundID: 1
+  clone_place: 0
 --- !u!1 &398086043
 GameObject:
   m_ObjectHideFlags: 0
@@ -836,7 +839,7 @@ GameObject:
   - component: {fileID: 1672711920}
   - component: {fileID: 1672711919}
   - component: {fileID: 1672711918}
-  - component: {fileID: 1672711917}
+  - component: {fileID: 1672711922}
   m_Layer: 0
   m_Name: FlatGround
   m_TagString: Prototype
@@ -844,20 +847,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1672711917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1672711916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e0dba53148bc3498052e9ca0877399, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundID: 0
-  isActive: 1
 --- !u!50 &1672711918
 Rigidbody2D:
   serializedVersion: 4
@@ -972,6 +961,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1672711922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672711916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d85443d41bc0a7746a1d807ea720e05b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movespeed: 0.1
+  isActive: 1
+  destroy_place: -24
+  groundID: 0
+  clone_place: 0
 --- !u!1 &1804465987
 GameObject:
   m_ObjectHideFlags: 0
@@ -987,7 +993,7 @@ GameObject:
   - component: {fileID: 1804465992}
   m_Layer: 0
   m_Name: FlatGround
-  m_TagString: Prototype
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1115,8 +1121,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1804465987}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e0dba53148bc3498052e9ca0877399, type: 3}
+  m_Script: {fileID: 11500000, guid: d85443d41bc0a7746a1d807ea720e05b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundID: 0
+  movespeed: 0.1
   isActive: 0
+  destroy_place: -24
+  groundID: 0
+  clone_place: 0
