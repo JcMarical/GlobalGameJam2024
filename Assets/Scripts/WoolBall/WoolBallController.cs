@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public enum WoolBallStateType
 {
@@ -14,7 +15,9 @@ public enum WoolBallStateType
 public class WoolBallParameter : FurnitureParameter
 {
     [Header("毛球特殊属性")] 
-    public float throwSpeed;
+    public float throwMinSpeed;
+
+    public float throwMaxSpeed;
 }
 
 #endregion
@@ -38,7 +41,7 @@ public class WoolBallController : MonoBehaviour
         states.Add(WoolBallStateType.Happiest,new WoolBallHappiestState(this));
         TransitonState(WoolBallStateType.Default);
         parameter.rigid = GetComponent<Rigidbody2D>();
-        parameter.rigid.velocity = Vector2.left*parameter.throwSpeed;
+        parameter.rigid.velocity = Vector2.left* Random.Range(parameter.throwMinSpeed,parameter.throwMaxSpeed);
     }
 
     // Update is called once per frame
