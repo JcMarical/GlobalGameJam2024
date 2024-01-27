@@ -23,7 +23,6 @@ public class ScrollGround : ScrollMono
                 }
                 if (groundID == 1)
                 {
-                    Debug.Log("done");
                     ScrollManager.NowSpeed = ScrollManager.ScrollSpeed[1];
                 }
             }

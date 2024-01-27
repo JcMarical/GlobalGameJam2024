@@ -25,7 +25,7 @@ public class BallFurniture : ScrollMono
         base.behavior_fixed();
         if (!isActive)
         {
-            RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position+Vector3.down*2, Vector2.down, 100.0f);
+            RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position+Vector3.down*4, Vector2.down, 100.0f);
             if (hit.collider.tag == "ground")
             {
                 if(hit.distance < 10.0f)

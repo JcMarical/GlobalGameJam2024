@@ -6,9 +6,9 @@ public class Player : MonoBase
 {
     // Start is called before the first frame update
     private float speed = 0.1f;
-    private float jumpspeed = 0.5f;
+    private float jumpspeed = 0.6f;
     private float jumpspeed_now=0.0f;
-    private float jump_holdtime = 5.0f;
+    private float jump_holdtime = 10.0f;
     private float jump_holdtime_now = 0.0f;
     private float a = 2.0f;
     private bool isJumping = false;

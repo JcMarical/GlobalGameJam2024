@@ -54,7 +54,7 @@ public class WoolBallController : FurnitureController<WoolBallParameter,WoolBall
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Player"))
+        if(other.CompareTag("Player")&&!parameter.isInteracting)
         {
 
             if (other.transform.position.y > transform.position.y + parameter.judgeHeight)
