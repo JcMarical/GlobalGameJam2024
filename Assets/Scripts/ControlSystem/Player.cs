@@ -12,10 +12,6 @@ public class Player : MonoBase
     private float jump_holdtime_now = 0.0f;
     private float a = 2.0f;
     private bool isJumping = false;
-
-    public Collider2D BodyBox;
-    public Collider2D FeetBox;
-
     void Start()
     {
         InputManager.Register(this);

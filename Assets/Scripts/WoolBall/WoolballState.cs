@@ -24,20 +24,32 @@ public class WoolballDefaultState : IState
     }
     public void OnUpdate() 
     {
-
+        if (parameter.isInteracting)
+        {
+            StartInteract(parameter.interactionHeight);
+        }
     }
     public void OnExit() 
     {
         timer = 0;
     } 
+    
+    private void StartInteract(float height)
+    {
+        parameter.rigid.velocity = Vector2.zero;
+        parameter.rigid.angularVelocity = 0;
+        manager.transform.position += new Vector3(0, height, 0);
+        parameter.rigid.constraints = RigidbodyConstraints2D.FreezePosition;
+        manager.TransitonState(WoolBallStateType.Upset);
+    }
 }
 public class WoolBallUpsetState : IState
 {
     private WoolBallController manager;
 
     private WoolBallParameter parameter;
-
-    private AnimatorStateInfo info;
+    
+    
     public WoolBallUpsetState(WoolBallController manager)
     {
         this.manager = manager;
@@ -48,8 +60,10 @@ public class WoolBallUpsetState : IState
         parameter.animator.Play("E001Upset");
     }
     
-    public void OnUpdate() 
+    public void OnUpdate()
     {
+        Vector3 rotateAngle = new Vector3(0, 0, parameter.interactionRotateSpeed * Time.deltaTime);
+        manager.transform.Rotate(Vector3.back);
         if (parameter.happiness > parameter.upsetThreshold && parameter.happiness < parameter.happyThreshold)
         {
             manager.TransitonState(WoolBallStateType.Happy);
@@ -77,6 +91,7 @@ public class WoolBallHappyState : IState
     
     public void OnUpdate() 
     {
+        manager.transform.Rotate(new Vector3(0,0,parameter.interactionRotateSpeed*Time.deltaTime));
         if (parameter.happiness <= parameter.upsetThreshold )
         {
             manager.TransitonState(WoolBallStateType.Upset);
@@ -110,6 +125,7 @@ public class WoolBallHappiestState : IState
     
     public void OnUpdate() 
     {
+        manager.transform.Rotate(new Vector3(0,0,parameter.interactionRotateSpeed*Time.deltaTime));
         if (parameter.happiness > parameter.upsetThreshold && parameter.happiness < parameter.happyThreshold)
         {
             manager.TransitonState(WoolBallStateType.Happy);
