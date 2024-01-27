@@ -71,27 +71,11 @@ public class ScrollGround : ScrollMono
             GameObject Arrow = clone();
             if (groundID == 2)
             {
-                Arrow.transform.position += new Vector3(-0.175f, 12.384f, 0.0f);
+                Arrow.transform.position += new Vector3(-4.0f, 12.384f, 0.0f);
             }
             if (groundID == 3)
             {
-                Arrow.transform.position += new Vector3(-2.0f, 0.0f, 0.0f);
-            }
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.tag == "Player")
-        {
-            if (groundID == 0)
-            {
-                movespeed = ScrollManager.ScrollSpeed[0];
-                gameObject.transform.position = new Vector3(transform.position.x, -0.125f, 0.0f);
-            }
-            else if (groundID == 1)
-            {
-                movespeed = ScrollManager.ScrollSpeed[1];
+                Arrow.transform.position += new Vector3(-10.0f, 0.0f, 0.0f);
             }
         }
     }
