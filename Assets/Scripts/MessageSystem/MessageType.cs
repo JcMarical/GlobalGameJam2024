@@ -32,5 +32,8 @@ public class MessageType
     public static int Scroll_Arrow = 502;
     //WoolBall
     public static int WoolBall_Interact = 601;
+    //Carton
+    public static int Carton_Interact = 701;
+    public static int Carton_Hurt = 702;
 
 }
