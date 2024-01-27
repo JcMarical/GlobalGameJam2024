@@ -40,8 +40,8 @@ public class WoolballDefaultState : IState
         parameter.rigid.angularVelocity = 0;
         manager.transform.position += new Vector3(0, height, 0);
         parameter.rigid.constraints = RigidbodyConstraints2D.FreezePosition;
-        parameter.magicCircle.SetActive(true);
-        parameter.magicCircle.transform.position =manager.transform.position - new Vector3(0, 5, 0);
+        parameter.fixedObject.SetActive(true);
+        parameter.fixedObject.transform.position = manager.transform.position;
         manager.TransitonState(WoolBallStateType.Upset);
     }
 }
@@ -59,13 +59,13 @@ public class WoolBallUpsetState : IState
     }
     public void OnEnter()
     {
-        parameter.animator.Play("E001Upset");
+        parameter.animator.Play("WoolBallUpset");
     }
     
     public void OnUpdate()
     {
-        Vector3 rotateAngle = new Vector3(0, 0, parameter.interactionRotateSpeed * Time.deltaTime);
-        manager.transform.Rotate(Vector3.back);
+        // Vector3 rotateAngle = new Vector3(0, 0, parameter.interactionRotateSpeed * Time.deltaTime);
+        // manager.transform.Rotate(Vector3.back);
         if (parameter.happiness > parameter.upsetThreshold && parameter.happiness < parameter.happyThreshold)
         {
             manager.TransitonState(WoolBallStateType.Happy);
@@ -93,7 +93,7 @@ public class WoolBallHappyState : IState
     
     public void OnUpdate() 
     {
-        manager.transform.Rotate(new Vector3(0,0,parameter.interactionRotateSpeed*Time.deltaTime));
+     //   manager.transform.Rotate(new Vector3(0,0,parameter.interactionRotateSpeed*Time.deltaTime));
         if (parameter.happiness <= parameter.upsetThreshold )
         {
             manager.TransitonState(WoolBallStateType.Upset);
