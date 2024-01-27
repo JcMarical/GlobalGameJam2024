@@ -40,10 +40,12 @@ public class ScrollMono : MonoBase
     {
         gameObject.transform.position = new Vector3(gameObject.transform.position.x - movespeed, gameObject.transform.position.y);
     }
-    public void clone()
+    public virtual GameObject clone()
     {
-        GameObject newground=Instantiate(gameObject);
-        newground.GetComponent<ScrollMono>().isActive = true;
+        GameObject newmono=Instantiate(gameObject);
+        newmono.GetComponent<ScrollMono>().isActive = true;
+        newmono.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        return newmono;
     }
 
     public void destroy()

@@ -5,6 +5,7 @@ using UnityEngine;
 public class BallFurniture : ScrollMono
 {
     // Start is called before the first frame update
+    public int FurnitureID;
     private float BoundSpeed=0.5f;
     private float BoundSpeed_now=0.0f;
     private float a=1.5f;
@@ -24,16 +25,20 @@ public class BallFurniture : ScrollMono
     }
     public override void behavior_fixed()
     {
-        base.behavior_fixed(); 
-        BoundSpeed_now -= a * Time.fixedDeltaTime;
-        gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + BoundSpeed_now);
-
+        base.behavior_fixed();
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    public override void ReceiveMessage(Message message)
     {
-        if (collision.collider.tag == "ground")
+        if (message.Command == MessageType.Scroll_NewFurniture && FurnitureID == (int)message.Content)
         {
-            BoundSpeed_now = BoundSpeed;
+            clone();
         }
+    }
+    public override GameObject clone()
+    {
+        GameObject NewFurniture=base.clone();
+        NewFurniture.transform.position = NewFurniture.transform.position + Vector3.down;
+        return NewFurniture;
     }
 }
