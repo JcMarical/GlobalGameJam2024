@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FurnitureController<T1,T2> : MonoBehaviour 
+public class FurnitureController<T1,T2> : MonoBase
     where T1 : class
     where T2 : Enum
 {
@@ -13,10 +13,12 @@ public class FurnitureController<T1,T2> : MonoBehaviour
 
     protected Dictionary<T2, IState> states = new Dictionary<T2, IState>();
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
-        
+        InputManager.Register(this);
     }
+    
+    
 
     // Update is called once per frame
     void Update()
@@ -34,5 +36,10 @@ public class FurnitureController<T1,T2> : MonoBehaviour
     public virtual void StartInteract(float height)
     {
 
+    }
+    
+    override public void ReceiveMessage(Message message)
+    {
+        
     }
 }

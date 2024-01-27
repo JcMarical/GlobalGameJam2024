@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1880003439213563799}
   - component: {fileID: 1880003439213563796}
   m_Layer: 6
-  m_Name: Cartoon
+  m_Name: Carton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,16 +104,11 @@ MonoBehaviour:
     upsetThreshold: 0
     happyThreshold: 0
     maxThreshold: 0
-    target: {fileID: 0}
-    targetLayer:
-      serializedVersion: 2
-      m_Bits: 0
-    attackPoint: {fileID: 0}
-    attackArea: 0
     animator: {fileID: 0}
     rigid: {fileID: 0}
     throwMinSpeed: 1
     throwMaxSpeed: 2
+    interactionRotateSpeed: 0
 --- !u!61 &1880003439213563799
 BoxCollider2D:
   m_ObjectHideFlags: 0

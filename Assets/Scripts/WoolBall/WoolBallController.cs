@@ -26,10 +26,10 @@ public class WoolBallParameter : FurnitureParameter
 public class WoolBallController : FurnitureController<WoolBallParameter,WoolBallStateType>
 {
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         parameter.animator = GetComponent<Animator>();
-        
         states.Add(WoolBallStateType.Default,new WoolballDefaultState(this));
         states.Add(WoolBallStateType.Upset,new WoolBallUpsetState(this));
         states.Add(WoolBallStateType.Happy,new WoolBallHappyState(this));
@@ -45,6 +45,11 @@ public class WoolBallController : FurnitureController<WoolBallParameter,WoolBall
         currentState.OnUpdate();
     }
 
+    override public void ReceiveMessage(Message message)
+    {
+        
+    }
+    
     #region API
     public override void StartInteract(float height)
     {

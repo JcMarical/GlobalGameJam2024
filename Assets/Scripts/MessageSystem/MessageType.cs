@@ -4,25 +4,30 @@ using UnityEngine;
 
 public class MessageType
 {
-    //ÏûÏ¢ÀàĞÍ
+    //ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
     public static byte Type_Controll = 1;
     public static byte Type_UI = 2;
     public static byte Type_Audio = 3;
     public static byte Type_Player = 4;
     public static byte Type_Scroll = 5;
-    //¿ØÖÆÏûÏ¢
+
+    public static byte Type_WoolBall = 6;
+    public static byte Type_Carton = 7; 
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
     public static int Controll_Move = 100;
     public static int Controll_Jump = 101;
-    //UIÏûÏ¢
+    //UIï¿½ï¿½Ï¢
     public static int UI_ShowPanel = 200;
     public static int UI_ClosePanel = 201;
     public static int UI_newText = 202;
-    //ÒôÆµÏûÏ¢
+    //ï¿½ï¿½Æµï¿½ï¿½Ï¢
     public static int Audio_play = 300;
-    //Íæ¼ÒÏûÏ¢
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
     public static int Player_OnGround = 400;
-    //¾íÖáÏûÏ¢
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
     public static int Scroll_NewGround = 500;
     public static int Scroll_NewFurniture = 501;
+    //WoolBall
+    public static int WoolBall_Interact = 601;
 
 }
