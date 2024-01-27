@@ -6,9 +6,6 @@ public class BallFurniture : ScrollMono
 {
     // Start is called before the first frame update
     public int FurnitureID;
-    private float BoundSpeed=0.5f;
-    private float BoundSpeed_now=0.0f;
-    private float a=1.5f;
     void Start()
     {
         behavior_start();
@@ -26,6 +23,22 @@ public class BallFurniture : ScrollMono
     public override void behavior_fixed()
     {
         base.behavior_fixed();
+        if (!isActive)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position+Vector3.down*2, Vector2.down, 100.0f);
+            if (hit.collider.tag == "ground")
+            {
+                if(hit.distance < 4.0f)
+                {
+                    gameObject.transform.position += new Vector3(0.0f, 4.0f - hit.distance, 0.0f);
+                }
+                else if (hit.distance > 8.0f)
+                {
+                    gameObject.transform.position -= new Vector3(0.0f,hit.distance-8.0f, 0.0f);
+                }
+            }
+        }
+
     }
 
     public override void ReceiveMessage(Message message)

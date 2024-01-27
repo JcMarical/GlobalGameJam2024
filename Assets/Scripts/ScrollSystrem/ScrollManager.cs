@@ -5,13 +5,17 @@ using UnityEngine;
 public class ScrollManager : ManagerBase
 {
     // Start is called before the first frame update
-    public static float ScrollSpeed=0.05f;
-    public static float FurnitureGen_time = 2.0f;
+    public static Vector3[] ScrollSpeed =new Vector3[3];
+    public static Vector3 NowSpeed;
+    public static float FurnitureGen_time = 5.0f;
     private float timer = 0;
     public int ProtoGroundCount;
     public int ProtoFurnitureCount;
     void Start()
     {
+        ScrollSpeed[0] = new Vector3(0.1f, 0.0f, 0.0f);
+        ScrollSpeed[1] = new Vector3(0.1f * Mathf.Cos(25 * Mathf.Deg2Rad), 0.1f * Mathf.Sin(25 * Mathf.Deg2Rad), 0.0f);
+        NowSpeed = ScrollSpeed[0];
         MessageCenter.Register(this);
     }
 
@@ -37,8 +41,10 @@ public class ScrollManager : ManagerBase
     {
         if (message.Command == MessageType.Scroll_NewGround)
         {
-            int aim = (int)((ProtoGroundCount + 1) * Random.value);
-            base.ReceiveMessage(new Message(message.Type, message.Command, aim));
+            int[] content = new int[2];
+            content[0]= (int)message.Content;
+            content[1] = (int)((ProtoGroundCount + 1) * Random.value);
+            base.ReceiveMessage(new Message(message.Type, message.Command, content));
         }
         else if (message.Command == MessageType.Scroll_NewFurniture)
         {

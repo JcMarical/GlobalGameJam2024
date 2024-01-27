@@ -5,7 +5,7 @@ using UnityEngine;
 public class ScrollMono : MonoBase
 {
     // Start is called before the first frame update
-    public float movespeed;
+    public Vector3 movespeed= new Vector3(0.0f,0.0f,0.0f);
     public bool isActive=false;
     public float destroy_place = -24.0f;
     void Start()
@@ -27,24 +27,25 @@ public class ScrollMono : MonoBase
     }
     public virtual void behavior_start()
     {
-        movespeed = ScrollManager.ScrollSpeed;
         if (!isActive)
             ScrollManager.Register(this);
     }
     public virtual void behavior_fixed()
     {
+        movespeed = ScrollManager.NowSpeed;
         if (isActive)
             move();
     }
     public virtual void move()
     {
-        gameObject.transform.position = new Vector3(gameObject.transform.position.x - movespeed, gameObject.transform.position.y);
+        gameObject.transform.position = gameObject.transform.position - movespeed;
     }
     public virtual GameObject clone()
     {
         GameObject newmono=Instantiate(gameObject);
         newmono.GetComponent<ScrollMono>().isActive = true;
         newmono.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        newmono.GetComponent<Collider2D>().isTrigger = false;
         return newmono;
     }
 
