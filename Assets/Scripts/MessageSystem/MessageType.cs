@@ -23,5 +23,6 @@ public class MessageType
     public static int Player_OnGround = 400;
     //¾íÖáÏûÏ¢
     public static int Scroll_NewGround = 500;
+    public static int Scroll_NewFurniture = 501;
 
 }
