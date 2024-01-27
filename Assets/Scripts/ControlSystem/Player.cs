@@ -15,7 +15,7 @@ public class Player : MonoBase
 
     private bool isInteracting = false;
     public GameObject wool;
-    public GameObject Sprite;
+    public GameObject cat;
 
     private float zero_x = -5.0f;
     private float offset_max = 10.0f;
@@ -39,6 +39,19 @@ public class Player : MonoBase
             jumpspeed_now -= a*Time.fixedDeltaTime;
             gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + jumpspeed_now);
         }
+        if (isInteracting)
+        {
+            if (cat.transform.localRotation.z > 0)
+            {
+                cat.transform.RotateAroundLocal(Vector3.forward, speed * 0.05f);
+                cat.transform.Translate(Vector3.left * 0.02f, Space.Self);
+            }
+            else
+            {
+                cat.transform.RotateAroundLocal(Vector3.back, speed * 0.05f);
+                cat.transform.Translate(Vector3.right * 0.02f, Space.Self);
+            }
+        }
     }
     override public void ReceiveMessage(Message message)
     {
@@ -56,6 +69,8 @@ public class Player : MonoBase
             gameObject.transform.position = new Vector3(zero_x + offset, gameObject.transform.position.y);
             if (isInteracting)
             {
+                cat.transform.RotateAroundLocal(Vector3.forward* (float)message.Content, speed*0.1f);
+                cat.transform.Translate(Vector3.left * (float)message.Content*0.04f, Space.Self);
             }
         }
         if (message.Command == MessageType.Controll_Jump)
