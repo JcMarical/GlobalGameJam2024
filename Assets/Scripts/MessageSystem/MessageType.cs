@@ -24,6 +24,8 @@ public class MessageType
     public static int Audio_play = 300;
     //�����Ϣ
     public static int Player_OnGround = 400;
+
+    public static int Player_Hurt = 401;
     //������Ϣ
     public static int Scroll_NewGround = 500;
     public static int Scroll_NewFurniture = 501;

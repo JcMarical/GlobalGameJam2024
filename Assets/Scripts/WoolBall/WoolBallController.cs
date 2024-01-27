@@ -17,6 +17,7 @@ public class WoolBallParameter : FurnitureParameter
     [Header("毛球特殊属性")]
     public float throwMinSpeed;
     public float throwMaxSpeed;
+
     public float interactionHeight;
     public float interactionRotateSpeed;
 }
@@ -49,17 +50,23 @@ public class WoolBallController : FurnitureController<WoolBallParameter,WoolBall
 
     override public void ReceiveMessage(Message message)
     {
-        if (message.Command == MessageType.WoolBall_Interact)
-        {
-            parameter.isInteracting = true;
-            //gameObject.transform.position = new Vector3(gameObject.transform.position.x + speed*(float)message.Content, gameObject.transform.position.y);
-        }
+
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag("Player"))
         {
-            MessageCenter.SendCustomMessage(new Message(MessageType.Type_WoolBall, MessageType.WoolBall_Interact, null));
+            Debug.Log("Hit!");
+            if (other.transform.position.y > transform.position.y + parameter.judgeHeight)
+            {
+                MessageCenter.SendCustomMessage(new Message(MessageType.Type_WoolBall, MessageType.WoolBall_Interact, null));
+                parameter.isInteracting = true;
+            }
+            else
+            {
+                MessageCenter.SendCustomMessage(new Message(MessageType.Type_WoolBall, MessageType.WoolBall_Intera, null));
+                parameter.isInteracting = true;
+            }
         }
     }
 

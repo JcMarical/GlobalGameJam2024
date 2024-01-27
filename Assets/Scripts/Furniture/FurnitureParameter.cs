@@ -12,6 +12,7 @@ public class FurnitureParameter
         public int maxThreshold;
         [Header("家具本身属性")] 
 
+        public float judgeHeight;
         public Animator animator;
         public Rigidbody2D rigid;
         public bool isInteracting;
