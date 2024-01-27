@@ -12,6 +12,13 @@ public class Player : MonoBase
     private float jump_holdtime_now = 0.0f;
     private float a = 2.0f;
     private bool isJumping = false;
+
+    private float zero_x = -5.0f;
+    private float offset_max = 10.0f;
+    private float offset = 0.0f;
+
+    public Collider2D BodyBox;
+    public Collider2D FeetBox;
     void Start()
     {
         InputManager.Register(this);
@@ -33,7 +40,16 @@ public class Player : MonoBase
     {
         if (message.Command == MessageType.Controll_Move)
         {
-            //gameObject.transform.position = new Vector3(gameObject.transform.position.x + speed*(float)message.Content, gameObject.transform.position.y);
+            offset += speed * (float)message.Content;
+            if (offset > offset_max)
+            {
+                offset = offset_max;
+            }
+            if (offset < -offset_max)
+            {
+                offset = -offset_max;
+            }
+            gameObject.transform.position = new Vector3(zero_x + offset, gameObject.transform.position.y);
         }
         if (message.Command == MessageType.Controll_Jump)
         {
