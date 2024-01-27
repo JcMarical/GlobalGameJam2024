@@ -10,7 +10,16 @@ public class FurnitureParameter
         public int upsetThreshold;
         public int happyThreshold;
         public int maxThreshold;
-        [Header("家具本身属性")]
+        [Header("家具本身属性")] 
+
         public Animator animator;
         public Rigidbody2D rigid;
+        public bool isInteracting;
+        public float destroyDistance = -50f;
+        
+        [Header("玩家")]
+        public Transform target;
+        public LayerMask targetLayer;
+        
+        
 }

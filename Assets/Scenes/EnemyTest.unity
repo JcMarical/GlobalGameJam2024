@@ -645,7 +645,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1880003439213563795, guid: 06bddac5dc5ea2f4a8f97340dbd6cb5e, type: 3}
       propertyPath: m_Name
-      value: Cartoon
+      value: Carton
       objectReference: {fileID: 0}
     - target: {fileID: 1880003439213563797, guid: 06bddac5dc5ea2f4a8f97340dbd6cb5e, type: 3}
       propertyPath: m_RootOrder

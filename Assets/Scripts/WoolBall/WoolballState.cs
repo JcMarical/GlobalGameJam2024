@@ -24,12 +24,24 @@ public class WoolballDefaultState : IState
     }
     public void OnUpdate() 
     {
-
+        if (parameter.isInteracting)
+        {
+            StartInteract(parameter.interactionHeight);
+        }
     }
     public void OnExit() 
     {
         timer = 0;
     } 
+    
+    private void StartInteract(float height)
+    {
+        parameter.rigid.velocity = Vector2.zero;
+        parameter.rigid.angularVelocity = 0;
+        manager.transform.position += new Vector3(0, height, 0);
+        parameter.rigid.constraints = RigidbodyConstraints2D.FreezePosition;
+        manager.TransitonState(WoolBallStateType.Upset);
+    }
 }
 public class WoolBallUpsetState : IState
 {

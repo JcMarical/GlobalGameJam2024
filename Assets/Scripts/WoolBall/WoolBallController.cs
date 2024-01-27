@@ -14,10 +14,10 @@ public enum WoolBallStateType
 [Serializable]
 public class WoolBallParameter : FurnitureParameter
 {
-    [Header("毛球特殊属性")] 
+    [Header("毛球特殊属性")]
     public float throwMinSpeed;
-
     public float throwMaxSpeed;
+    public float interactionHeight;
     public float interactionRotateSpeed;
 }
 
@@ -42,23 +42,37 @@ public class WoolBallController : FurnitureController<WoolBallParameter,WoolBall
     // Update is called once per frame
     void Update()
     {
+
         currentState.OnUpdate();
+        DestroyMethod(parameter.destroyDistance);
     }
 
     override public void ReceiveMessage(Message message)
     {
-        
+        if (message.Command == MessageType.WoolBall_Interact)
+        {
+            parameter.isInteracting = true;
+            //gameObject.transform.position = new Vector3(gameObject.transform.position.x + speed*(float)message.Content, gameObject.transform.position.y);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            MessageCenter.SendCustomMessage(new Message(MessageType.Type_WoolBall, MessageType.WoolBall_Interact, null));
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            parameter.target = null;
+        }
     }
     
     #region API
-    public override void StartInteract(float height)
-    {
-        parameter.rigid.velocity = Vector2.zero;
-        parameter.rigid.angularVelocity = 0;
-        transform.position += new Vector3(0, height, 0);
-        parameter.rigid.constraints = RigidbodyConstraints2D.FreezePosition;
-        TransitonState(WoolBallStateType.Upset);
-    }
+
     
 
     #endregion

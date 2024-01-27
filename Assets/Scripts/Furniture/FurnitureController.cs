@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FurnitureController<T1,T2> : MonoBase
-    where T1 : class
+    where T1 : FurnitureParameter
     where T2 : Enum
 {
     public T1 parameter;
@@ -21,10 +21,7 @@ public class FurnitureController<T1,T2> : MonoBase
     
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
     public void TransitonState(T2 type)
     {
         if (currentState! != null)
@@ -38,8 +35,10 @@ public class FurnitureController<T1,T2> : MonoBase
 
     }
     
-    override public void ReceiveMessage(Message message)
+    protected void DestroyMethod(float distance)
     {
-        
+        if(transform.position.x < distance)
+            GameObject.Destroy(this.gameObject);
     }
+
 }
