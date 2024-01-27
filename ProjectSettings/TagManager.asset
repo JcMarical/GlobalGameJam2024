@@ -7,6 +7,9 @@ TagManager:
   - ground
   - Prototype
   - EnemyBox
+  - UpsetArea
+  - NormalArea
+  - HappyArea
   layers:
   - Default
   - TransparentFX

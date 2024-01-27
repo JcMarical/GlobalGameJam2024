@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2537618338280848634}
   - component: {fileID: 770982856390956081}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: InteractArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,10 +58,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2761006957304930809}
   - component: {fileID: 2761006957304930814}
-  - component: {fileID: 2761006957304930815}
   - component: {fileID: 2761006957304930808}
   - component: {fileID: 2761006957304930811}
   - component: {fileID: 4580633734383234328}
+  - component: {fileID: 3484609005896132423}
   m_Layer: 6
   m_Name: WoolBall
   m_TagString: Untagged
@@ -78,7 +78,7 @@ Transform:
   m_GameObject: {fileID: 2761006957304930812}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2537618338280848634}
@@ -125,8 +125,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_SortingOrder: 10
+  m_Sprite: {fileID: -903841770233175445, guid: 56b1fe4313e125b4e88d306da330e0c8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -137,22 +137,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &2761006957304930815
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2761006957304930812}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 8f7dd59772fe61042b6c09372c5827b3, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!50 &2761006957304930808
 Rigidbody2D:
   serializedVersion: 4
@@ -169,7 +153,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8f7dd59772fe61042b6c09372c5827b3, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -191,6 +175,7 @@ MonoBehaviour:
     upsetThreshold: 0
     happyThreshold: 0
     maxThreshold: 0
+    judgeHeight: 0
     animator: {fileID: 0}
     rigid: {fileID: 0}
     isInteracting: 0
@@ -201,7 +186,7 @@ MonoBehaviour:
       m_Bits: 0
     throwMinSpeed: 3
     throwMaxSpeed: 10
-    interactionHeight: 0
+    interactionHeight: 3
     interactionRotateSpeed: 0
 --- !u!95 &4580633734383234328
 Animator:
@@ -223,3 +208,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!58 &3484609005896132423
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2761006957304930812}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.7323725, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.5326276
