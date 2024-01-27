@@ -14,6 +14,7 @@ public class Player : MonoBase
     private bool isJumping = false;
 
     private bool isInteracting = false;
+    private float Interact_time = 0.0f;
     public GameObject wool;
     public GameObject cat;
 
@@ -41,6 +42,7 @@ public class Player : MonoBase
         }
         if (isInteracting)
         {
+            Interact_time += Time.fixedDeltaTime;
             if (cat.transform.localRotation.z > 0)
             {
                 cat.transform.RotateAroundLocal(Vector3.forward, speed * 0.05f);
@@ -50,6 +52,15 @@ public class Player : MonoBase
             {
                 cat.transform.RotateAroundLocal(Vector3.back, speed * 0.05f);
                 cat.transform.Translate(Vector3.right * 0.02f, Space.Self);
+            }
+            if (Mathf.Abs(cat.transform.localRotation.z) > 0.4)
+            {
+                isInteracting = false;
+                wool.SetActive(false);
+                gameObject.GetComponent<Collider2D>().offset = new Vector2(gameObject.GetComponent<Collider2D>().offset.x, gameObject.GetComponent<Collider2D>().offset.y + 5.0f);
+                gameObject.transform.position += cat.transform.localPosition;
+                cat.transform.localEulerAngles = Vector3.zero;
+                cat.transform.localPosition = Vector3.zero;
             }
         }
     }
@@ -96,6 +107,7 @@ public class Player : MonoBase
         if (message.Command == MessageType.WoolBall_Interact&&!isInteracting)
         {
             isInteracting = true;
+            Interact_time = 0.0f;
             wool.SetActive(true);
             gameObject.GetComponent<Collider2D>().offset = new Vector2(gameObject.GetComponent<Collider2D>().offset.x, gameObject.GetComponent<Collider2D>().offset.y - 5.0f);
         }
