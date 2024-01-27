@@ -56,16 +56,16 @@ public class WoolBallController : FurnitureController<WoolBallParameter,WoolBall
     {
         if(other.CompareTag("Player"))
         {
-            Debug.Log("Hit!");
+
             if (other.transform.position.y > transform.position.y + parameter.judgeHeight)
             {
-                MessageCenter.SendCustomMessage(new Message(MessageType.Type_WoolBall, MessageType.WoolBall_Interact, null));
+                MessageCenter.SendCustomMessage(new Message(MessageType.Type_Player, MessageType.WoolBall_Interact, null));
                 parameter.isInteracting = true;
             }
             else
-            {
-                MessageCenter.SendCustomMessage(new Message(MessageType.Type_WoolBall, MessageType.WoolBall_Intera, null));
-                parameter.isInteracting = true;
+            {   
+                Debug.Log("Hit!");
+                MessageCenter.SendCustomMessage(new Message(MessageType.Type_Player, MessageType.Player_Hurt, null));
             }
         }
     }
