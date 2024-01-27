@@ -16,6 +16,7 @@ public class MessageType
     //������Ϣ
     public static int Controll_Move = 100;
     public static int Controll_Jump = 101;
+    public static int Controll_Down = 102;
     //UI��Ϣ
     public static int UI_ShowPanel = 200;
     public static int UI_ClosePanel = 201;

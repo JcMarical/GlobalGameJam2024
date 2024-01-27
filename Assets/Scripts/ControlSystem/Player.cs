@@ -99,6 +99,14 @@ public class Player : MonoBase
             wool.SetActive(true);
             gameObject.GetComponent<Collider2D>().offset = new Vector2(gameObject.GetComponent<Collider2D>().offset.x, gameObject.GetComponent<Collider2D>().offset.y - 5.0f);
         }
+        if(message.Command== MessageType.Controll_Down && isInteracting)
+        {
+            isInteracting = false;
+            wool.SetActive(false);
+            gameObject.GetComponent<Collider2D>().offset = new Vector2(gameObject.GetComponent<Collider2D>().offset.x, gameObject.GetComponent<Collider2D>().offset.y + 5.0f);
+            cat.transform.localEulerAngles = Vector3.zero;
+            cat.transform.localPosition = Vector3.zero;
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
