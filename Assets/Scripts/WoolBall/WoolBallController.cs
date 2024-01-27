@@ -20,6 +20,7 @@ public class WoolBallParameter : FurnitureParameter
 
     public float interactionHeight;
     public float interactionRotateSpeed;
+    
 }
 
 #endregion
@@ -50,7 +51,7 @@ public class WoolBallController : FurnitureController<WoolBallParameter,WoolBall
 
     override public void ReceiveMessage(Message message)
     {
-
+        
     }
     private void OnTriggerEnter2D(Collider2D other)
     {

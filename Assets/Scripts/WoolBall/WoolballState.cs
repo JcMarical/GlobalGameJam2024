@@ -40,6 +40,8 @@ public class WoolballDefaultState : IState
         parameter.rigid.angularVelocity = 0;
         manager.transform.position += new Vector3(0, height, 0);
         parameter.rigid.constraints = RigidbodyConstraints2D.FreezePosition;
+        parameter.magicCircle.SetActive(true);
+        parameter.magicCircle.transform.position =manager.transform.position - new Vector3(0, 5, 0);
         manager.TransitonState(WoolBallStateType.Upset);
     }
 }

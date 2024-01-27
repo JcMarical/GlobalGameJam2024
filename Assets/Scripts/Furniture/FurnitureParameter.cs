@@ -21,6 +21,10 @@ public class FurnitureParameter
         [Header("玩家")]
         public Transform target;
         public LayerMask targetLayer;
-        
-        
+
+        [Header("特效")] 
+        public GameObject smoke;
+        public GameObject magicCircle;
+
+
 }
