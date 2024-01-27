@@ -10,8 +10,9 @@ public class FurnitureParameter
         public int upsetThreshold;
         public int happyThreshold;
         public int maxThreshold;
-        [Header("家具本身属性")] 
-
+        [Header("家具本身属性")] public bool isUpset;
+        public bool isNormal;
+        public bool isHappy;
         public float judgeHeight;
         public Animator animator;
         public Rigidbody2D rigid;
@@ -21,6 +22,8 @@ public class FurnitureParameter
         [Header("玩家")]
         public Transform target;
         public LayerMask targetLayer;
-        
-        
+
+        [Header("特效和碰撞器")] public GameObject fixedObject;
+
+
 }
