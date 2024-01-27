@@ -38,11 +38,11 @@ public class WoolballDefaultState : IState
     {
         parameter.rigid.velocity = Vector2.zero;
         parameter.rigid.angularVelocity = 0;
-        manager.transform.position += new Vector3(0, height, 0);
+        //manager.transform.position += new Vector3(0, height, 0);
         parameter.rigid.constraints = RigidbodyConstraints2D.FreezePosition;
-        parameter.fixedObject.SetActive(true);
-        parameter.fixedObject.transform.position = manager.transform.position;
-        manager.TransitonState(WoolBallStateType.Upset);
+        //parameter.fixedObject.SetActive(true);
+        //parameter.fixedObject.transform.position = manager.transform.position;
+        //manager.TransitonState(WoolBallStateType.Upset);
     }
 }
 public class WoolBallUpsetState : IState

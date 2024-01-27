@@ -13,6 +13,10 @@ public class Player : MonoBase
     private float a = 2.0f;
     private bool isJumping = false;
 
+    private bool isInteracting = false;
+    public GameObject wool;
+    public GameObject Sprite;
+
     private float zero_x = -5.0f;
     private float offset_max = 10.0f;
     private float offset = 0.0f;
@@ -50,6 +54,9 @@ public class Player : MonoBase
                 offset = -offset_max;
             }
             gameObject.transform.position = new Vector3(zero_x + offset, gameObject.transform.position.y);
+            if (isInteracting)
+            {
+            }
         }
         if (message.Command == MessageType.Controll_Jump)
         {
@@ -70,6 +77,12 @@ public class Player : MonoBase
         {
             isJumping = false;
             jumpspeed_now = 0;
+        }
+        if (message.Command == MessageType.WoolBall_Interact&&!isInteracting)
+        {
+            isInteracting = true;
+            wool.SetActive(true);
+            gameObject.GetComponent<Collider2D>().offset = new Vector2(gameObject.GetComponent<Collider2D>().offset.x, gameObject.GetComponent<Collider2D>().offset.y - 5.0f);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)

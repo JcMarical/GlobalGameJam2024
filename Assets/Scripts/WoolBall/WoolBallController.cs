@@ -46,12 +46,15 @@ public class WoolBallController : FurnitureController<WoolBallParameter,WoolBall
     {
 
         currentState.OnUpdate();
+        if (parameter.isInteracting)
+        {
+            GameObject.Destroy(gameObject);
+        }
         DestroyMethod(parameter.destroyDistance);
     }
 
     override public void ReceiveMessage(Message message)
     {
-        
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -60,13 +63,16 @@ public class WoolBallController : FurnitureController<WoolBallParameter,WoolBall
 
             if (other.transform.position.y > transform.position.y + parameter.judgeHeight)
             {
+                transform.position = new Vector3(other.transform.position.x,transform.position.y);
                 MessageCenter.SendCustomMessage(new Message(MessageType.Type_Player, MessageType.WoolBall_Interact, null));
+                MessageCenter.SendCustomMessage(new Message(MessageType.Type_Controll, MessageType.WoolBall_Interact, null));
                 parameter.isInteracting = true;
             }
             else
             {   
                 Debug.Log("Hit!");
                 MessageCenter.SendCustomMessage(new Message(MessageType.Type_Player, MessageType.Player_Hurt, null));
+                Destroy(gameObject.GetComponent<Collider2D>());
             }
         }
     }
