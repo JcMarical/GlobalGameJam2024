@@ -62,6 +62,7 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         currentState.OnUpdate();
+        Invoke("DestroyMethod", 10f);
     }
 
     public void TransitonState(StateType type)
@@ -104,6 +105,11 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    private void DestroyMethod()
+    {
+        GameObject.Destroy(this.gameObject);
+    }
+    
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(parameter.attackPoint.position, parameter.attackArea);

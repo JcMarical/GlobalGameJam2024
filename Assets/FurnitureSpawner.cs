@@ -16,7 +16,6 @@ public class FurnitureSpawner : MonoBehaviour
     private void FixedUpdate()
     {
         SpawnMethod(spawnInterval);
-        Debug.Log(timer);
     }
 
     private void SpawnMethod(float spawnInterval)
@@ -29,4 +28,6 @@ public class FurnitureSpawner : MonoBehaviour
             timer = 0;
         }
     }
+
+
 }

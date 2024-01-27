@@ -11,10 +11,6 @@ public class FurnitureParameter
         public int happyThreshold;
         public int maxThreshold;
         [Header("家具本身属性")]
-        public Transform target;
-        public LayerMask targetLayer;
-        public Transform attackPoint;
-        public float attackArea;
         public Animator animator;
         public Rigidbody2D rigid;
 }

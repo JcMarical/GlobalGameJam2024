@@ -18,18 +18,13 @@ public class WoolBallParameter : FurnitureParameter
     public float throwMinSpeed;
 
     public float throwMaxSpeed;
+    public float interactionRotateSpeed;
 }
 
 #endregion
 
-public class WoolBallController : MonoBehaviour
+public class WoolBallController : FurnitureController<WoolBallParameter,WoolBallStateType>
 {
-    public WoolBallParameter parameter;
-
-    private IState currentState;
-
-    private Dictionary<WoolBallStateType, IState> states = new Dictionary<WoolBallStateType, IState>();
-
     // Start is called before the first frame update
     void Start()
     {
@@ -48,51 +43,19 @@ public class WoolBallController : MonoBehaviour
     void Update()
     {
         currentState.OnUpdate();
-
     }
 
-    public void TransitonState(WoolBallStateType type)
+    #region API
+    public override void StartInteract(float height)
     {
-        if (currentState! != null)
-            currentState.OnExit();
-        currentState = states[type];
-        currentState.OnEnter();
+        parameter.rigid.velocity = Vector2.zero;
+        parameter.rigid.angularVelocity = 0;
+        transform.position += new Vector3(0, height, 0);
+        parameter.rigid.constraints = RigidbodyConstraints2D.FreezePosition;
+        TransitonState(WoolBallStateType.Upset);
     }
+    
 
-    public void FlipTo(Transform target)
-    {
-        if(target != null)
-        {
-            if(transform.position.x > target.position.x)
-            {
-                transform.localScale = new Vector3(1, 1, 1);
-            }
-            else if (transform.position.x < target.position.x)
-            {
-                transform.localScale = new Vector3(-1, 1, 1);
-            }
-        }
-    }
+    #endregion
 
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.CompareTag("Player"))
-        {
-            parameter.target = other.transform;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            parameter.target = null;
-        }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(parameter.attackPoint.position, parameter.attackArea);
-    }
 }

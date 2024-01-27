@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2761006957304930815}
   - component: {fileID: 2761006957304930808}
   - component: {fileID: 2761006957304930811}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WoolBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
