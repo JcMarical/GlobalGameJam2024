@@ -28,13 +28,13 @@ public class BallFurniture : ScrollMono
             RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position+Vector3.down*2, Vector2.down, 100.0f);
             if (hit.collider.tag == "ground")
             {
-                if(hit.distance < 4.0f)
+                if(hit.distance < 10.0f)
                 {
-                    gameObject.transform.position += new Vector3(0.0f, 4.0f - hit.distance, 0.0f);
+                    gameObject.transform.position += new Vector3(0.0f, 10.0f - hit.distance, 0.0f);
                 }
-                else if (hit.distance > 8.0f)
+                else if (hit.distance > 14.0f)
                 {
-                    gameObject.transform.position -= new Vector3(0.0f,hit.distance-8.0f, 0.0f);
+                    gameObject.transform.position -= new Vector3(0.0f,hit.distance-14.0f, 0.0f);
                 }
             }
         }

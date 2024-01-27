@@ -29,6 +29,7 @@ public class MessageType
     //������Ϣ
     public static int Scroll_NewGround = 500;
     public static int Scroll_NewFurniture = 501;
+    public static int Scroll_Arrow = 502;
     //WoolBall
     public static int WoolBall_Interact = 601;
 

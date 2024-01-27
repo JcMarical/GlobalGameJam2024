@@ -7,7 +7,7 @@ public class MonoBase : MonoBehaviour
 
     public virtual void ReceiveMessage(Message message)
     {
-        
+
     }
 
     // Start is called before the first frame update
