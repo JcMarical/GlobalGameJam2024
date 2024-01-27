@@ -46,6 +46,10 @@ public class ScrollGround : ScrollMono
             GameObject newGround = clone();
             if (((int[])message.Content)[0] == 0)
             {
+                if (groundID == 1)
+                {
+                    MessageCenter.SendCustomMessage(new Message(MessageType.Type_Scroll, MessageType.Scroll_Arrow, 3));
+                }
                 newGround.GetComponent<ScrollGround>().movespeed = ScrollManager.ScrollSpeed[0];
             }
             else if(((int[])message.Content)[0] == 1)
@@ -53,12 +57,25 @@ public class ScrollGround : ScrollMono
                 newGround.GetComponent<ScrollGround>().movespeed = ScrollManager.ScrollSpeed[1];
                 if (groundID == 0)
                 {
+                    MessageCenter.SendCustomMessage(new Message(MessageType.Type_Scroll, MessageType.Scroll_Arrow,2));
                     newGround.transform.position += new Vector3(0.647f, 12.384f, 0.0f);
                 }
                 if (groundID == 1)
                 {
                     newGround.transform.position += new Vector3(-0.878f, 12.296f, 0.0f);
                 }
+            }
+        }
+        if (message.Command == MessageType.Scroll_Arrow && groundID == (int)message.Content)
+        {
+            GameObject Arrow = clone();
+            if (groundID == 2)
+            {
+                Arrow.transform.position += new Vector3(-0.175f, 12.384f, 0.0f);
+            }
+            if (groundID == 3)
+            {
+                Arrow.transform.position += new Vector3(-2.0f, 0.0f, 0.0f);
             }
         }
     }

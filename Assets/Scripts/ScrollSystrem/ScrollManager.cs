@@ -41,10 +41,10 @@ public class ScrollManager : ManagerBase
     {
         if (message.Command == MessageType.Scroll_NewGround)
         {
-            int[] content = new int[2];
-            content[0]= (int)message.Content;
-            content[1] = (int)((ProtoGroundCount + 1) * Random.value);
-            base.ReceiveMessage(new Message(message.Type, message.Command, content));
+                int[] content = new int[2];
+                content[0] = (int)message.Content;
+                content[1] = (int)((ProtoGroundCount + 1) * Random.value);
+                base.ReceiveMessage(new Message(message.Type, message.Command, content));
         }
         else if (message.Command == MessageType.Scroll_NewFurniture)
         {
