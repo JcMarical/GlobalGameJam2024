@@ -1915,13 +1915,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInteracting: 0
   wool: {fileID: 1891417299}
-<<<<<<< Updated upstream
-  cat: {fileID: 908616071}
-  HappyValue: 0
-=======
   cat: {fileID: 0}
   HappyValue: 60
->>>>>>> Stashed changes
 --- !u!50 &720829678
 Rigidbody2D:
   serializedVersion: 4
