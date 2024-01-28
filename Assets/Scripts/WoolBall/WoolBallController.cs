@@ -79,8 +79,8 @@ public class WoolBallController : FurnitureController<WoolBallParameter,WoolBall
             else
             {
                 Debug.Log("Hit!");
+                MessageCenter.SendCustomMessage(new Message(MessageType.Type_Controll, MessageType.Controll_Down, null));
                 MessageCenter.SendCustomMessage(new Message(MessageType.Type_Controll, MessageType.Player_Hurt, null));
-                MessageCenter.SendCustomMessage(new Message(MessageType.Type_Controll, MessageType.Controll_Down,null));
                 Destroy(gameObject.GetComponent<Collider2D>());
             }
         }

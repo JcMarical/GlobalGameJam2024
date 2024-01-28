@@ -16,9 +16,11 @@ public class Player : MonoBase
     public bool isInteracting = false;
     private float Interact_time = 0.0f;
     public GameObject wool;
+    public GameObject wool1;
+    public GameObject wool2;
     public GameObject cat;
 
-    public float HappyValue=0.0f;
+    public float HappyValue=60.0f;
 
     private float zero_x = -5.0f;
     private float offset_max = 10.0f;
@@ -66,17 +68,27 @@ public class Player : MonoBase
                 HappyValue -= 10.0f;
                 isInteracting = false;
                 wool.SetActive(false);
-                gameObject.GetComponent<Collider2D>().offset = new Vector2(gameObject.GetComponent<Collider2D>().offset.x, gameObject.GetComponent<Collider2D>().offset.y + 5.0f);
+                wool1.SetActive(false);
+                wool2.SetActive(false);
                 gameObject.transform.position += cat.transform.localPosition;
                 cat.transform.localEulerAngles = Vector3.zero;
                 cat.transform.localPosition = Vector3.zero;
                 cat.GetComponent<Animator>().SetBool("IsInteract", false);
             }
+            if (Interact_time > 3.0f)
+            {
+                wool.SetActive(false);
+                wool1.SetActive(true);
+            }
+            if (Interact_time > 7.0f)
+            {
+                wool1.SetActive(false);
+                wool2.SetActive(true);
+            }
             if (Interact_time > 10.0f)
             {
                 isInteracting = false;
-                wool.SetActive(false);
-                gameObject.GetComponent<Collider2D>().offset = new Vector2(gameObject.GetComponent<Collider2D>().offset.x, gameObject.GetComponent<Collider2D>().offset.y + 5.0f);
+                wool2.SetActive(false);
                 gameObject.transform.position += cat.transform.localPosition;
                 cat.transform.localEulerAngles = Vector3.zero;
                 cat.transform.localPosition = Vector3.zero;
@@ -130,13 +142,13 @@ public class Player : MonoBase
             Interact_time = 0.0f;
             wool.SetActive(true);
             cat.GetComponent<Animator>().SetBool("IsInteract", true);
-            gameObject.GetComponent<Collider2D>().offset = new Vector2(gameObject.GetComponent<Collider2D>().offset.x, gameObject.GetComponent<Collider2D>().offset.y - 5.0f);
         }
         if(message.Command== MessageType.Controll_Down && isInteracting)
         {
             isInteracting = false;
             wool.SetActive(false);
-            gameObject.GetComponent<Collider2D>().offset = new Vector2(gameObject.GetComponent<Collider2D>().offset.x, gameObject.GetComponent<Collider2D>().offset.y + 5.0f);
+            wool1.SetActive(false);
+            wool2.SetActive(false);
             cat.transform.localEulerAngles = Vector3.zero;
             cat.transform.localPosition = Vector3.zero;
             cat.GetComponent<Animator>().SetBool("IsInteract", false);

@@ -7,7 +7,7 @@ public class ScrollManager : ManagerBase
     // Start is called before the first frame update
     public static Vector3[] ScrollSpeed =new Vector3[3];
     public static Vector3 NowSpeed;
-    public static float FurnitureGen_time = 2.0f;
+    public static float FurnitureGen_time = 5.0f;
     private float timer = 0;
     public int ProtoGroundCount;
     public int ProtoFurnitureCount;

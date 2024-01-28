@@ -1938,11 +1938,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4867a2e1def519c4ca8d25138f527204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInteracting: 0
   wool: {fileID: 1891417299}
-  cat: {fileID: 0}
+  cat: {fileID: 908616071}
   HappyValue: 0
-  BodyBox: {fileID: 648465995}
-  FeetBox: {fileID: 31149722}
 --- !u!50 &720829678
 Rigidbody2D:
   serializedVersion: 4
