@@ -1940,6 +1940,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wool: {fileID: 1891417299}
   cat: {fileID: 0}
+  HappyValue: 0
   BodyBox: {fileID: 648465995}
   FeetBox: {fileID: 31149722}
 --- !u!50 &720829678
@@ -2770,6 +2771,7 @@ MonoBehaviour:
   handleAreaPoint: []
   mapRatio: 0
   happinessRatio: 0
+  woolBallUI: {fileID: 0}
   player: {fileID: 0}
 --- !u!1001 &1531877437
 PrefabInstance:

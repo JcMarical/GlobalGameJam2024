@@ -13,17 +13,17 @@ public class Player : MonoBase
     private float a = 2.0f;
     private bool isJumping = false;
 
-    private bool isInteracting = false;
+    public bool isInteracting = false;
     private float Interact_time = 0.0f;
     public GameObject wool;
     public GameObject cat;
+
+    public float HappyValue=0.0f;
 
     private float zero_x = -5.0f;
     private float offset_max = 10.0f;
     private float offset = 0.0f;
 
-    public Collider2D BodyBox;
-    public Collider2D FeetBox;
     void Start()
     {
         InputManager.Register(this);
@@ -53,7 +53,25 @@ public class Player : MonoBase
                 cat.transform.RotateAroundLocal(Vector3.back, speed * 0.05f);
                 cat.transform.Translate(Vector3.right * 0.02f, Space.Self);
             }
+            if (Mathf.Abs(cat.transform.localRotation.z) < 0.2)
+            {
+                HappyValue += Time.fixedDeltaTime*2;
+            }
+            else if (Mathf.Abs(cat.transform.localRotation.z) < 0.4)
+            {
+                HappyValue += Time.fixedDeltaTime;
+            }
             if (Mathf.Abs(cat.transform.localRotation.z) > 0.4)
+            {
+                HappyValue -= 10.0f;
+                isInteracting = false;
+                wool.SetActive(false);
+                gameObject.GetComponent<Collider2D>().offset = new Vector2(gameObject.GetComponent<Collider2D>().offset.x, gameObject.GetComponent<Collider2D>().offset.y + 5.0f);
+                gameObject.transform.position += cat.transform.localPosition;
+                cat.transform.localEulerAngles = Vector3.zero;
+                cat.transform.localPosition = Vector3.zero;
+            }
+            if (Interact_time > 10.0f)
             {
                 isInteracting = false;
                 wool.SetActive(false);
@@ -106,6 +124,7 @@ public class Player : MonoBase
         }
         if (message.Command == MessageType.WoolBall_Interact&&!isInteracting)
         {
+            Debug.Log("done");
             isInteracting = true;
             Interact_time = 0.0f;
             wool.SetActive(true);
@@ -118,6 +137,10 @@ public class Player : MonoBase
             gameObject.GetComponent<Collider2D>().offset = new Vector2(gameObject.GetComponent<Collider2D>().offset.x, gameObject.GetComponent<Collider2D>().offset.y + 5.0f);
             cat.transform.localEulerAngles = Vector3.zero;
             cat.transform.localPosition = Vector3.zero;
+        }
+        if(message.Command== MessageType.Player_Hurt)
+        {
+            HappyValue -= 5.0f;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)

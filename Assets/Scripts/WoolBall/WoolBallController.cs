@@ -58,20 +58,29 @@ public class WoolBallController : FurnitureController<WoolBallParameter,WoolBall
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Player")&&!parameter.isInteracting)
+        if(other.CompareTag("Player")&& !parameter.isInteracting)
         {
-
-            if (other.transform.position.y > transform.position.y + parameter.judgeHeight)
+            if (!other.GetComponentInParent<Player>().isInteracting)
             {
-                transform.position = new Vector3(other.transform.position.x,transform.position.y);
-                MessageCenter.SendCustomMessage(new Message(MessageType.Type_Player, MessageType.WoolBall_Interact, null));
-                MessageCenter.SendCustomMessage(new Message(MessageType.Type_Controll, MessageType.WoolBall_Interact, null));
-                parameter.isInteracting = true;
+                if (other.transform.position.y > transform.position.y + parameter.judgeHeight)
+                {
+                    transform.position = new Vector3(other.transform.position.x, transform.position.y);
+                    //MessageCenter.SendCustomMessage(new Message(MessageType.Type_Player, MessageType.WoolBall_Interact, null));
+                    MessageCenter.SendCustomMessage(new Message(MessageType.Type_Controll, MessageType.WoolBall_Interact, null));
+                    parameter.isInteracting = true;
+                }
+                else
+                {
+                    Debug.Log("Hit!");
+                    MessageCenter.SendCustomMessage(new Message(MessageType.Type_Controll, MessageType.Player_Hurt, null));
+                    Destroy(gameObject.GetComponent<Collider2D>());
+                }
             }
             else
-            {   
+            {
                 Debug.Log("Hit!");
-                MessageCenter.SendCustomMessage(new Message(MessageType.Type_Player, MessageType.Player_Hurt, null));
+                MessageCenter.SendCustomMessage(new Message(MessageType.Type_Controll, MessageType.Player_Hurt, null));
+                MessageCenter.SendCustomMessage(new Message(MessageType.Type_Controll, MessageType.Controll_Down,null));
                 Destroy(gameObject.GetComponent<Collider2D>());
             }
         }
