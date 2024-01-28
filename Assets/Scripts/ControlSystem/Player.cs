@@ -63,18 +63,6 @@ public class Player : MonoBase
             {
                 HappyValue += Time.fixedDeltaTime;
             }
-            if (Mathf.Abs(cat.transform.localRotation.z) > 0.4)
-            {
-                HappyValue -= 10.0f;
-                isInteracting = false;
-                wool.SetActive(false);
-                wool1.SetActive(false);
-                wool2.SetActive(false);
-                gameObject.transform.position += cat.transform.localPosition;
-                cat.transform.localEulerAngles = Vector3.zero;
-                cat.transform.localPosition = Vector3.zero;
-                cat.GetComponent<Animator>().SetBool("IsInteract", false);
-            }
             if (Interact_time > 3.0f)
             {
                 wool.SetActive(false);
@@ -88,6 +76,20 @@ public class Player : MonoBase
             if (Interact_time > 10.0f)
             {
                 isInteracting = false;
+                wool.SetActive(false);
+                wool1.SetActive(false);
+                wool2.SetActive(false);
+                gameObject.transform.position += cat.transform.localPosition;
+                cat.transform.localEulerAngles = Vector3.zero;
+                cat.transform.localPosition = Vector3.zero;
+                cat.GetComponent<Animator>().SetBool("IsInteract", false);
+            }
+            if (Mathf.Abs(cat.transform.localRotation.z) > 0.4)
+            {
+                HappyValue -= 10.0f;
+                isInteracting = false;
+                wool.SetActive(false);
+                wool1.SetActive(false);
                 wool2.SetActive(false);
                 gameObject.transform.position += cat.transform.localPosition;
                 cat.transform.localEulerAngles = Vector3.zero;
