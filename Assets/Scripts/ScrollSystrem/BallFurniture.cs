@@ -6,6 +6,8 @@ public class BallFurniture : ScrollMono
 {
     // Start is called before the first frame update
     public int FurnitureID;
+    public float height_dis;
+    public float check_dis;
     void Start()
     {
         behavior_start();
@@ -25,16 +27,16 @@ public class BallFurniture : ScrollMono
             base.behavior_fixed();
         if (!isActive)
         {
-            RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position+Vector3.down*4, Vector2.down, 100.0f);
+            RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position+Vector3.down* check_dis, Vector2.down, 100.0f);
             if (hit.collider.tag == "ground")
             {
-                if(hit.distance < 14.0f)
+                if(hit.distance < height_dis)
                 {
-                    gameObject.transform.position += new Vector3(0.0f, 14.0f - hit.distance, 0.0f);
+                    gameObject.transform.position += new Vector3(0.0f, height_dis - hit.distance, 0.0f);
                 }
-                else if (hit.distance > 18.0f)
+                else if (hit.distance > height_dis+4.0f)
                 {
-                    gameObject.transform.position -= new Vector3(0.0f,hit.distance-18.0f, 0.0f);
+                    gameObject.transform.position -= new Vector3(0.0f,hit.distance-(height_dis+4.0f), 0.0f);
                 }
             }
         }
