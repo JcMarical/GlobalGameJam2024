@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FurnitureController<T1,T2> : MonoBase
-    where T1 : FurnitureParameter
+    where T1 : class
     where T2 : Enum
 {
     public T1 parameter;

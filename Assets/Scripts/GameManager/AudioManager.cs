@@ -103,17 +103,15 @@ public class AudioManager : MonoBehaviour
     }
     
     //公开方法：循环播放，用于播放长时间的背景音乐，处理方式相对简单一些
-    public void PlayBGM(AudioClip clip, float volume, float pan, float pitch = 1.0f)
+    public void PlayMusic(AudioClip clip, float volume, float pan,bool loop,float pitch = 1.0f )
     {
-
-                m_channels[0].channel.clip = clip;
+                m_channels[0].channel.clip = clip;  
                 m_channels[0].channel.volume = volume;
                 m_channels[0].channel.pitch = pitch;
                 m_channels[0].channel.panStereo = pan;
-                m_channels[0].channel.loop = true;
+                m_channels[0].channel.loop = loop;
                 m_channels[0].channel.Play();
                 m_channels[0].keyOnTime = Time.time;
-
     }
  
     //公开方法：停止所有音频
