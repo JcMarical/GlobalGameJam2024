@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
         {
             ResetStage();
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
     }
 
     private void ResetStage()
@@ -27,6 +29,11 @@ public class GameManager : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    public void QuitGame()
+    {
+
     }
     
     IEnumerator LoadNextStage()

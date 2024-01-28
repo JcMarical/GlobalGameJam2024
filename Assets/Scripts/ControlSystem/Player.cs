@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBase
 {
@@ -39,6 +40,10 @@ public class Player : MonoBase
     }
     private void FixedUpdate()
     {
+        if (HappyValue<=0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        }
         if (isJumping)
         {
             jumpspeed_now -= a*Time.fixedDeltaTime;
@@ -164,7 +169,7 @@ public class Player : MonoBase
         if(message.Command== MessageType.Player_Hurt)
         {
             cat.GetComponent<Animator>().SetBool("IsHurt", true);
-            HappyValue -= 5.0f;
+            HappyValue -= 10.0f;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
