@@ -124,8 +124,8 @@ MonoBehaviour:
   isInteracting: 0
   judgeHeight: 0
   rigid: {fileID: 0}
-  throwMinSpeed: 5
-  throwMaxSpeed: 15
+  throwMinSpeed: 2
+  throwMaxSpeed: 6
 --- !u!60 &4378751821738533413
 PolygonCollider2D:
   m_ObjectHideFlags: 0

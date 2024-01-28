@@ -198,5 +198,5 @@ MonoBehaviour:
   isInteracting: 0
   judgeHeight: 0
   rigid: {fileID: 0}
-  throwMinSpeed: 5
-  throwMaxSpeed: 15
+  throwMinSpeed: 1
+  throwMaxSpeed: 5
