@@ -60,13 +60,13 @@ public class UIController: MonoBehaviour
         if (mapTimer > allTime)
         {
             Debug.Log("恭喜通关！！！");
+            MessageCenter.SendCustomMessage(new Message(MessageType.Type_Controll, MessageType.Audio_frame, null));
         }
     }
     public void HappyChange()
     {
             float value = playerScript.HappyValue / happyMaxValue;
             happinessSlider.value = value;
-            Debug.Log(value);
             if (value < 0.3333f)
             {
                 happinessBar.sprite = BarSprites[0];

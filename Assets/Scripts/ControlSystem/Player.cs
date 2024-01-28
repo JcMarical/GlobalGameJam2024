@@ -19,6 +19,7 @@ public class Player : MonoBase
     public GameObject wool1;
     public GameObject wool2;
     public GameObject cat;
+    public GameObject frame;
 
     public float HappyValue=60.0f;
 
@@ -101,6 +102,10 @@ public class Player : MonoBase
     }
     override public void ReceiveMessage(Message message)
     {
+        if (message.Command == MessageType.Audio_frame)
+        {
+            frame.SetActive(true);
+        }
         if (message.Command == MessageType.Controll_Move)
         {
             offset += speed * (float)message.Content;

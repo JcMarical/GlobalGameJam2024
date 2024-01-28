@@ -23,6 +23,7 @@ public class MessageType
     public static int UI_newText = 202;
     //��Ƶ��Ϣ
     public static int Audio_play = 300;
+    public static int Audio_frame = 301;
     //�����Ϣ
     public static int Player_OnGround = 400;
 

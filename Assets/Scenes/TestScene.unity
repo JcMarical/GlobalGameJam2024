@@ -1254,6 +1254,7 @@ MonoBehaviour:
   wool1: {fileID: 1937392580}
   wool2: {fileID: 2127551523}
   cat: {fileID: 1380431180}
+  frame: {fileID: 0}
   HappyValue: 0
 --- !u!50 &720829678
 Rigidbody2D:
