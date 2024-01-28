@@ -412,6 +412,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5352860628284159731, guid: 672cf044260ad8547bd5bdbdce25434d, type: 3}
+      propertyPath: rigid
+      value: 
+      objectReference: {fileID: 107780674}
     - target: {fileID: 5352860628284159732, guid: 672cf044260ad8547bd5bdbdce25434d, type: 3}
       propertyPath: m_BodyType
       value: 2
@@ -450,6 +454,11 @@ MonoBehaviour:
   FurnitureID: 1
   height_dis: 10
   check_dis: 2
+--- !u!50 &107780674 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 5352860628284159732, guid: 672cf044260ad8547bd5bdbdce25434d, type: 3}
+  m_PrefabInstance: {fileID: 107780669}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &109850315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1007,6 +1016,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6296668533454350442, guid: 6035dfd9beea8594c9bf5368f946bbcd, type: 3}
+      propertyPath: rigid
+      value: 
+      objectReference: {fileID: 321413052}
     - target: {fileID: 6296668533454350443, guid: 6035dfd9beea8594c9bf5368f946bbcd, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -1085,6 +1098,11 @@ MonoBehaviour:
   FurnitureID: 3
   height_dis: 10
   check_dis: 2
+--- !u!50 &321413052 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 6296668533454350445, guid: 6035dfd9beea8594c9bf5368f946bbcd, type: 3}
+  m_PrefabInstance: {fileID: 321413046}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &354776109
 GameObject:
   m_ObjectHideFlags: 0
@@ -3793,6 +3811,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1046821831151674085, guid: 1bc3b5d0b46f4ef41b016191dd264bb2, type: 3}
+      propertyPath: rigid
+      value: 
+      objectReference: {fileID: 1779917022}
     - target: {fileID: 1046821831151674087, guid: 1bc3b5d0b46f4ef41b016191dd264bb2, type: 3}
       propertyPath: m_SortingOrder
       value: 2
@@ -3831,6 +3853,11 @@ MonoBehaviour:
   FurnitureID: 2
   height_dis: 10
   check_dis: 2
+--- !u!50 &1779917022 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 1046821831151674082, guid: 1bc3b5d0b46f4ef41b016191dd264bb2, type: 3}
+  m_PrefabInstance: {fileID: 1779917017}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1804465987
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,17 +18,14 @@ public class littleThingController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Player")&& !isInteracting)
+        if (other.CompareTag("Player") && !isInteracting)
         {
             if (!other.GetComponentInParent<Player>().isInteracting)
             {
                 if (other.transform.position.y > transform.position.y + judgeHeight)
+                {
                     transform.position = new Vector3(other.transform.position.x, transform.position.y);
                     //MessageCenter.SendCustomMessage(new Message(MessageType.Type_Player, MessageType.WoolBall_Interact, null));
                     // MessageCenter.SendCustomMessage(new Message(MessageType.Type_Controll, MessageType.WoolBall_Interact, null));
@@ -36,7 +33,6 @@ public class littleThingController : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Hit!");
                     MessageCenter.SendCustomMessage(new Message(MessageType.Type_Controll, MessageType.Controll_Jump, null));
                     MessageCenter.SendCustomMessage(new Message(MessageType.Type_Controll, MessageType.Player_Hurt, null));
                     Destroy(gameObject.GetComponent<Collider2D>());
@@ -44,12 +40,12 @@ public class littleThingController : MonoBehaviour
             }
             else
             {
-                Debug.Log("Hit!");
                 MessageCenter.SendCustomMessage(new Message(MessageType.Type_Controll, MessageType.Controll_Down, null));
                 MessageCenter.SendCustomMessage(new Message(MessageType.Type_Controll, MessageType.Player_Hurt, null));
                 Destroy(gameObject.GetComponent<Collider2D>());
             }
         }
+    }
     
     
 }

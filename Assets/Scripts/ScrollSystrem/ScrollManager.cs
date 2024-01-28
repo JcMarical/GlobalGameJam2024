@@ -49,7 +49,6 @@ public class ScrollManager : ManagerBase
         else if (message.Command == MessageType.Scroll_NewFurniture)
         {
             int aim = (int)((ProtoFurnitureCount + 1) * Random.value);
-            Debug.Log(aim);
             base.ReceiveMessage(new Message(message.Type, message.Command, aim));
         }
         else
