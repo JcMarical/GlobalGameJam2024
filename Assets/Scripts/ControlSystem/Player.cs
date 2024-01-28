@@ -28,6 +28,7 @@ public class Player : MonoBase
 
     void Start()
     {
+        HappyValue = 60.0f;
         InputManager.Register(this);
     }
 
