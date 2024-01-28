@@ -66,7 +66,7 @@ public class WoolBallController : FurnitureController<WoolBallParameter,WoolBall
                 {
                     transform.position = new Vector3(other.transform.position.x, transform.position.y);
                     //MessageCenter.SendCustomMessage(new Message(MessageType.Type_Player, MessageType.WoolBall_Interact, null));
-                    MessageCenter.SendCustomMessage(new Message(MessageType.Type_Controll, MessageType.WoolBall_Interact, null));
+                   // MessageCenter.SendCustomMessage(new Message(MessageType.Type_Controll, MessageType.WoolBall_Interact, null));
                     parameter.isInteracting = true;
                 }
                 else
