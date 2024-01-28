@@ -70,6 +70,7 @@ public class Player : MonoBase
                 gameObject.transform.position += cat.transform.localPosition;
                 cat.transform.localEulerAngles = Vector3.zero;
                 cat.transform.localPosition = Vector3.zero;
+                cat.GetComponent<Animator>().SetBool("IsInteract", false);
             }
             if (Interact_time > 10.0f)
             {
@@ -79,6 +80,7 @@ public class Player : MonoBase
                 gameObject.transform.position += cat.transform.localPosition;
                 cat.transform.localEulerAngles = Vector3.zero;
                 cat.transform.localPosition = Vector3.zero;
+                cat.GetComponent<Animator>().SetBool("IsInteract", false);
             }
         }
     }
@@ -124,10 +126,10 @@ public class Player : MonoBase
         }
         if (message.Command == MessageType.WoolBall_Interact&&!isInteracting)
         {
-            Debug.Log("done");
             isInteracting = true;
             Interact_time = 0.0f;
             wool.SetActive(true);
+            cat.GetComponent<Animator>().SetBool("IsInteract", true);
             gameObject.GetComponent<Collider2D>().offset = new Vector2(gameObject.GetComponent<Collider2D>().offset.x, gameObject.GetComponent<Collider2D>().offset.y - 5.0f);
         }
         if(message.Command== MessageType.Controll_Down && isInteracting)
@@ -137,9 +139,11 @@ public class Player : MonoBase
             gameObject.GetComponent<Collider2D>().offset = new Vector2(gameObject.GetComponent<Collider2D>().offset.x, gameObject.GetComponent<Collider2D>().offset.y + 5.0f);
             cat.transform.localEulerAngles = Vector3.zero;
             cat.transform.localPosition = Vector3.zero;
+            cat.GetComponent<Animator>().SetBool("IsInteract", false);
         }
         if(message.Command== MessageType.Player_Hurt)
         {
+            cat.GetComponent<Animator>().SetBool("IsHurt", true);
             HappyValue -= 5.0f;
         }
     }
